@@ -11,13 +11,15 @@
 
 
 
-FROM node:20.20.2-alpine3.23 as builder
+FROM node:20-alpine AS builder
 RUN apk add --no-cache curl
-WORKDIR /app
-COPY package*.json .
-COPY server.js .
 
+WORKDIR /app
+
+COPY package*.json ./
 RUN npm install
+
+COPY . .
 
 
 FROM node:20.20.2-alpine3.23
