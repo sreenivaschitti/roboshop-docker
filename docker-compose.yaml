@@ -20,10 +20,16 @@ services:
     depends_on:
     - catalogue
     - user 
+
   mongodb:
     build: ./mongodb
     image: sreenivaschitti/mongodb:1.0.0 
     container_name: mongodb
+
+  redis:
+    build: redis 7.0
+    container_name: redis
+
 
 networks:
   default:
