@@ -21,14 +21,15 @@ RUN npm install
 
 COPY . .
 
-
-FROM node:20.20.2-alpine3.23
+# ---- Runtime Stage ----
+FROM node:20-alpine
 WORKDIR /app
 EXPOSE 8080
+
 COPY --from=builder /app /app
-ENV MONGO="true"\
+
+ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
 
-#ENTRYPOINT ["server.js"]
 CMD ["node","server.js"]
 
