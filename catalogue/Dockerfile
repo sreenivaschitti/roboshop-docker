@@ -14,8 +14,9 @@
 FROM node:20.20.2-alpine3.23 as builder
 RUN apk add --no-cache curl
 WORKDIR /app
-COPY package*.json ./
-COPY *.js .
+COPY package*.json .
+COPY server.js .
+
 RUN npm install
 
 
