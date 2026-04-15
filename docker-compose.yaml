@@ -27,7 +27,7 @@ services:
     container_name: mongodb
 
   redis:
-    image: redis 7.0
+    image: redis:7.0
     container_name: redis
 
 
