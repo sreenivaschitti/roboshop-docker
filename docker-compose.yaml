@@ -1,0 +1,32 @@
+services:
+  catalogue:
+    build: ./catalogue
+    image: sreenivaschitti/catalogue:1.0.0
+    container_name: catalogue
+    depends_on:
+    - mongodb
+  user:
+    build: ./user
+    image: sreenivaschitti/user:1.0.0
+    container_name: user
+    depends_on:
+    - redis 
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+    - "80:80"
+    depends_on:
+    - catalogue
+    - user 
+  mongodb:
+    build: ./mongodb
+    image: sreenivaschitti/mongodb:1.0.0 
+    container_name: mongodb
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: false    
