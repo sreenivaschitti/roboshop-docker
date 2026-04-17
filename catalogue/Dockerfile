@@ -1,35 +1,15 @@
-# FROM node:20
-# RUN apk add --no-cache curl
-# WORKDIR /app
-# COPY package.json .
-# COPY *.js .
-# RUN npm install
-# ENV MONGO="true"\
-#     MONGO_URL="mongodb://mongodb:27017/catalogue"
-# CMD ["node","server.js"]
-
-
-
-
-FROM node:20-alpine AS builder
+FROM node:20
 RUN apk add --no-cache curl
-
 WORKDIR /app
-
-COPY package*.json ./
+COPY package.json .
+COPY *.js .
 RUN npm install
-
-COPY . .
-
-# ---- Runtime Stage ----
-FROM node:20-alpine
-WORKDIR /app
-EXPOSE 8080
-
-COPY --from=builder /app /app
-
-ENV MONGO="true" \
+ENV MONGO="true"\
     MONGO_URL="mongodb://mongodb:27017/catalogue"
-
 CMD ["node","server.js"]
+
+
+
+
+
 

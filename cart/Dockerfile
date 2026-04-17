@@ -8,3 +8,4 @@ ENV REDIS_HOST="redis"\
     CATALOGUE_PORT="8080"
     #MONGO_URL="mongodb://mongodb:27017/users"
 CMD ["node","server.js"]
+
