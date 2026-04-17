@@ -5,12 +5,12 @@ services:
     container_name: catalogue
     depends_on:
     - mongodb
-  # user:
-  #   build: ./user
-  #   image: sreenivaschitti/user:1.0.0
-  #   container_name: user
-  #   depends_on:
-  #   - redis 
+  user:
+    build: ./user
+    image: sreenivaschitti/user:1.0.0
+    container_name: user
+    depends_on:
+    - redis 
 
   # cart:
   #   build: ./cart
@@ -45,15 +45,15 @@ services:
   #   - cart
   #   - user
 
-  # frontend:
-  #   build: ./frontend
-  #   image: sreenivaschitti/frontend
-  #   container_name: frontend
-  #   ports:
-  #   - "80:80"
-  #   depends_on:
-  #   - catalogue
-  #   - user 
+  frontend:
+    build: ./frontend
+    image: sreenivaschitti/frontend
+    container_name: frontend
+    ports:
+    - "80:80"
+    depends_on:
+    - catalogue
+    - user 
   #   - cart
   #   - shipping
   #   - payment
@@ -63,9 +63,9 @@ services:
     image: sreenivaschitti/mongodb:1.0.0 
     container_name: mongodb
 
-  # redis:
-  #   image: redis:7.0
-  #   container_name: redis
+  redis:
+    image: redis:7.0
+    container_name: redis
 
   # mysql:
   #   build: ./mysql
