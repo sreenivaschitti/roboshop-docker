@@ -47,7 +47,7 @@ services:
 
   frontend:
     build: ./frontend
-    image: sreenivaschitti/frontend:1.0.0
+    image: sreenivaschitti/frontend:2.0.0
     container_name: frontend
     ports:
     - "80:80"
