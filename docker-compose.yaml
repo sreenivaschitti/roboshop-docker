@@ -19,13 +19,13 @@ services:
     depends_on:
     - redis
 
-  # shipping:
-  #   build: ./shipping
-  #   image: sreenivaschitti/shipping:1.0.0
-  #   container_name: shipping
-  #   depends_on:
-  #   - mysql 
-  #   - cart
+  shipping:
+    build: ./shipping
+    image: sreenivaschitti/shipping:1.0.0
+    container_name: shipping
+    depends_on:
+    - mysql 
+    - cart
 
   # payment:
   #   build: ./payment
@@ -55,7 +55,7 @@ services:
     - catalogue
     - user 
     - cart
-  #   - shipping
+    - shipping
   #   - payment
 
   mongodb:
@@ -67,9 +67,9 @@ services:
     image: redis:7.0
     container_name: redis
 
-  # mysql:
-  #   build: ./mysql
-  #   image: sreenivaschitti/mysql:1.0.0 
+  mysql:
+    build: ./mysql
+    image: sreenivaschitti/mysql:1.0.0 
 
   # rabbitmq:
   #   image: rabbitmq:3
