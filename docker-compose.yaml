@@ -69,7 +69,9 @@ services:
 
   mysql:
     build: ./mysql
-    image: sreenivaschitti/mysql:1.0.0 
+    image: sreenivaschitti/mysql:1.0.0
+    container_name: mysql 
+
 
   # rabbitmq:
   #   image: rabbitmq:3
