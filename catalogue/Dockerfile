@@ -16,10 +16,9 @@ RUN apk add --no-cache curl
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json .
 RUN npm install
 
-COPY . .
 
 # ---- Runtime Stage ----
 FROM node:20-alpine
@@ -31,5 +30,9 @@ COPY --from=builder /app /app
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
 
-CMD ["node","server.js"]
+RUN addgroup -s roboshop && adduser -s roboshop -G roboshop
+RUN chown -R roboshop:roboshop /app
+USER roboshop    
+CMD ["server"]
+ENTRYPOINT ["node"]
 
