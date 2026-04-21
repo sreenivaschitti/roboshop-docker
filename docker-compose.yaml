@@ -12,12 +12,12 @@ services:
     depends_on:
     - redis 
 
-  # cart:
-  #   build: ./cart
-  #   image: sreenivaschitti/cart:1.0.0
-  #   container_name: user
-  #   depends_on:
-  #   - redis
+  cart:
+    build: ./cart
+    image: sreenivaschitti/cart:1.0.0
+    container_name: user
+    depends_on:
+    - redis
 
   # shipping:
   #   build: ./shipping
@@ -54,7 +54,7 @@ services:
     depends_on:
     - catalogue
     - user 
-    # - cart
+    - cart
     # - shipping
     # - payment
 
