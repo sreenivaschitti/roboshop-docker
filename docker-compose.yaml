@@ -28,23 +28,23 @@ services:
     - mysql 
     - cart
 
-  # payment:
-  #   build: ./payment
-  #   image: sreenivaschitti/payment:1.0.0
-  #   container_name: payment
-  #   environment:
-  #     CART_HOST: "cart"
-  #     CART_PORT: "8080"
-  #     USER_HOST: "user"
-  #     USER_PORT: "8080"
-  #     AMQP_HOST: "rabbitmq"
-  #     AMQP_USER: "roboshop"
-  #     AMQP_PASS: "roboshop123"
+  payment:
+    build: ./payment
+    image: sreenivaschitti/payment:1.0.0
+    container_name: payment
+    environment:
+      CART_HOST: "cart"
+      CART_PORT: "8080"
+      USER_HOST: "user"
+      USER_PORT: "8080"
+      AMQP_HOST: "rabbitmq"
+      AMQP_USER: "roboshop"
+      AMQP_PASS: "roboshop123"
 
-  #   depends_on:
-  #   - rabbitmq
-  #   - cart
-  #   - user
+    depends_on:
+    - rabbitmq
+    - cart
+    - user
 
   frontend:
     build: ./frontend
@@ -57,7 +57,7 @@ services:
     - user 
     - cart
     - shipping
-    # - payment
+    - payment
 
   mongodb:
     build: ./mongodb
@@ -72,12 +72,12 @@ services:
     build: ./mysql
     image: sreenivaschitti/mysql:1.0.0 
 
-  # rabbitmq:
-  #   image: rabbitmq:3
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: roboshop
-  #     RABBITMQ_DEFAULT_PASS: roboshop123 
-  #     container_name: rabbitmq
+  rabbitmq:
+    image: rabbitmq:3
+    environment:
+      RABBITMQ_DEFAULT_USER: roboshop
+      RABBITMQ_DEFAULT_PASS: roboshop123 
+      container_name: rabbitmq
 
 networks:
   default:
