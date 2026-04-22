@@ -2,7 +2,7 @@ FROM node:20
 WORKDIR /app
 COPY package.json .
 COPY *.js .
-EXPOSE 8080
+# EXPOSE 8080
 RUN npm install
 ENV MONGO="true"\
     MONGO_URL="mongodb://mongodb:27017/catalogue"
