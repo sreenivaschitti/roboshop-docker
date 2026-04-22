@@ -10,7 +10,8 @@ services:
     image: sreenivaschitti/user:1.0.0
     container_name: user
     depends_on:
-    - redis 
+    - redis
+    - mongodb
 
   cart:
     build: ./cart
