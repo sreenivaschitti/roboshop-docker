@@ -28,8 +28,9 @@ EXPOSE 8080
 
 COPY --from=builder /app /app
 # this handle with config map
-# ENV MONGO="true" \
-#     MONGO_URL="mongodb://mongodb:27017/catalogue"
+# ENV REDIS_HOST="redis"\
+#     CATALOGUE_HOST="catalogue"\
+#     CATALOGUE_PORT="8080"
 
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 RUN chown -R roboshop:roboshop /app
