@@ -11,7 +11,7 @@ EXPOSE 8080
 WORKDIR /app
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop && \
     chown -R roboshop:roboshop /app
-COPY --from=builder /app/shipping.jar
+COPY --from=builder /app/shipping.jar .
 # ENV CART_ENDPOINT="cart:8080" \
 #     DB_HOST="mysql"
 USER roboshop 
