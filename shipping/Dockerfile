@@ -4,7 +4,7 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean package && \
-RUN mv target/shipping-1.0.jar shipping.jar 
+    mv target/shipping-1.0.jar shipping.jar 
 
 FROM eclipse-temurin:17-jre-alpine
 EXPOSE 8080
